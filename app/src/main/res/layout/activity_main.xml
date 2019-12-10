@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/app_margin_smallest"
-                android:text="@string/views"
+                tools:text="Просмотры"
                 app:layout_constraintBottom_toBottomOf="@+id/viewsIcon"
                 app:layout_constraintStart_toEndOf="@+id/viewsIcon"
                 app:layout_constraintTop_toTopOf="@+id/viewsIcon" />
@@ -114,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/app_margin_smallest"
-                android:text="@string/liked"
+                tools:text="Лайки"
                 app:layout_constraintBottom_toBottomOf="@+id/likeIcon"
                 app:layout_constraintStart_toEndOf="@+id/likeIcon"
                 app:layout_constraintTop_toTopOf="@+id/likeIcon" />
@@ -124,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/app_margin_smallest"
-                android:text="@string/still"
+                tools:text="ещё"
                 android:textColor="@color/colorLiteBlue"
                 app:layout_constraintBottom_toBottomOf="@+id/likeArrowRightBtn"
                 app:layout_constraintEnd_toStartOf="@+id/likeArrowRightBtn"

@@ -1,4 +1,4 @@
-package com.example.poststatistics.screens.liked;
+package com.example.poststatistics.screens.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

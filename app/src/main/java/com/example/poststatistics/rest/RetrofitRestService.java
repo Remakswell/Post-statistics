@@ -1,7 +1,8 @@
 package com.example.poststatistics.rest;
 
-import com.example.poststatistics.models.liked.liked_request.LikeRequest;
+import com.example.poststatistics.models.PostRequest;
 import com.example.poststatistics.models.liked.liked_response.Example;
+import com.example.poststatistics.models.post.post_response.Post;
 
 import io.reactivex.Single;
 import retrofit2.http.Body;
@@ -14,5 +15,11 @@ public interface RetrofitRestService {
     Single<Example> getLikedUsersList(@Header("Content-Type") String headerContentType,
                                       @Header("Accept") String headerAccept,
                                       @Header("Authorization") String headerToken,
-                                      @Body LikeRequest body);
+                                      @Body PostRequest body);
+
+    @POST("/v1/users/posts/get")
+    Single<Post> getPost(@Header("Content-Type") String headerContentType,
+                         @Header("Accept") String headerAccept,
+                         @Header("Authorization") String headerToken,
+                         @Body PostRequest body);
 }

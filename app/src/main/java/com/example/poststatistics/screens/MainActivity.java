@@ -16,23 +16,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.poststatistics.R;
 import com.example.poststatistics.models.liked.liked_response.Datum;
 import com.example.poststatistics.rest.ServerApiImpl;
-import com.example.poststatistics.screens.liked.LikedAdapter;
-import com.example.poststatistics.screens.liked.LikedPresenter;
-import com.example.poststatistics.screens.liked.LikedView;
+import com.example.poststatistics.screens.adapters.LikedAdapter;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements LikedView {
+public class MainActivity extends AppCompatActivity implements MainView {
 
     private Toolbar toolbar;
     private ProgressBar progressBar;
     private TextView likeCountText;
     private TextView remainingCountText;
+    private TextView viewsTextCount;
 
     private LinearLayoutManager layoutManager;
     private RecyclerView recyclerView;
     private LikedAdapter likedAdapter;
-    private LikedPresenter likedPresenter;
+    private MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements LikedView {
         progressBar = findViewById(R.id.progressBar);
         likeCountText = findViewById(R.id.likeCountText);
         remainingCountText = findViewById(R.id.remainingCountText);
+        viewsTextCount = findViewById(R.id.viewsText);
 
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView = findViewById(R.id.likedRecyclerView);
@@ -64,7 +64,20 @@ public class MainActivity extends AppCompatActivity implements LikedView {
         });
 
         recyclerView.setAdapter(likedAdapter);
-        likedPresenter = new LikedPresenter(this, new ServerApiImpl(this));
+
+        presenter = new MainPresenter(this, new ServerApiImpl(this));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
     }
 
     @Override
@@ -76,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements LikedView {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_update) {
-            //
+            presenter.onResume();
         }
         return true;
     }
@@ -88,15 +101,8 @@ public class MainActivity extends AppCompatActivity implements LikedView {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        likedPresenter.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        likedPresenter.onDestroy();
-        super.onDestroy();
+    public void setViewsCount(int count) {
+        viewsTextCount.setText(getString(R.string.views_count, count));
     }
 
     @Override

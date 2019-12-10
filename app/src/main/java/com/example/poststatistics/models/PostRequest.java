@@ -1,12 +1,12 @@
-package com.example.poststatistics.models.liked.liked_request;
+package com.example.poststatistics.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LikeRequest {
+public class PostRequest {
     @SerializedName("id")
     private Long id;
 
-    public LikeRequest(Long id) {
+    public PostRequest(Long id) {
         this.id = id;
     }
 }
