@@ -19,6 +19,7 @@ class MainPresenter {
         serverApiImp.addLikedUsers();
         serverApiImp.addViewsCount();
         serverApiImp.addCommentUsers();
+        serverApiImp.addMarkedUsers();
     }
 
     void onDestroy() {

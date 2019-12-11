@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.poststatistics.models.PostRequest;
 import com.example.poststatistics.models.comment.CommentExample;
 import com.example.poststatistics.models.liked.liked_response.LikedExample;
+import com.example.poststatistics.models.marked.MarkedExample;
 import com.example.poststatistics.models.post.post_response.Post;
 import com.example.poststatistics.screens.MainView;
 
@@ -57,12 +58,14 @@ public class ServerApiImpl implements ServerApi {
                     @Override
                     public void onSuccess(Post post) {
                         likedView.setViewsCount(post.getViewsCount());
+                        likedView.setRepostsCount(post.getRepostsCount());
+                        likedView.setBookmarkCount(post.getBookmarksCount());
                         likedView.hideProgress();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.i("testgetpost", "on error test " + e);
+                        Log.i("error_tag", "error: " + e);
                     }
                 });
     }
@@ -83,7 +86,28 @@ public class ServerApiImpl implements ServerApi {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.i("testgetpost", "on error test " + e);
+                        Log.i("error_tag", "error: " + e);
+                    }
+                });
+    }
+
+    @Override
+    public void addMarkedUsers() {
+
+        retrofitRestService.getMarkedUsers(APPLICATION_JSON, APPLICATION_JSON, "Bearer " + TOKEN, new PostRequest(POST_ID))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DisposableSingleObserver<MarkedExample>() {
+
+                    @Override
+                    public void onSuccess(MarkedExample markedExample) {
+                        likedView.setMarkedCount(markedExample.getData().size());
+                        likedView.hideProgress();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.i("error_tag", "oerror: " + e);
                     }
                 });
     }

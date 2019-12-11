@@ -4,4 +4,5 @@ public interface ServerApi {
     void addLikedUsers();
     void addViewsCount();
     void addCommentUsers();
+    void addMarkedUsers();
 }

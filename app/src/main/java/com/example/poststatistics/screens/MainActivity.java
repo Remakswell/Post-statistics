@@ -44,6 +44,15 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private RecyclerView commentRecyclerView;
     private CommentAdapter commentAdapter;
 
+    //Marked
+    private TextView markedCountText;
+
+    //Reposts
+    private TextView repostsCount;
+
+    //Bookmark
+    private TextView bookmarkCount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         progressBar = findViewById(R.id.progressBar);
         presenter = new MainPresenter(this, new ServerApiImpl(this));
 
-        initViewsList();
+        initCount();
         initLikedList();
         initCommentList();
     }
@@ -100,8 +109,23 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     @Override
+    public void setMarkedCount(int markedCount) {
+        markedCountText.setText(getString(R.string.marked_count, markedCount));
+    }
+
+    @Override
     public void setViewsCount(int count) {
         viewsTextCount.setText(getString(R.string.views_count, count));
+    }
+
+    @Override
+    public void setRepostsCount(int count) {
+        repostsCount.setText(getString(R.string.reposts_count, count));
+    }
+
+    @Override
+    public void setBookmarkCount(int count) {
+        bookmarkCount.setText(getString(R.string.bookmark_count, count));
     }
 
     @Override
@@ -114,8 +138,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
         progressBar.setVisibility(View.GONE);
     }
 
-    private void initViewsList(){
+    private void initCount(){
         viewsTextCount = findViewById(R.id.viewsText);
+        markedCountText = findViewById(R.id.markedText);
+        repostsCount = findViewById(R.id.repostsText);
+        bookmarkCount = findViewById(R.id.bookmarkText);
     }
 
     private void initLikedList(){

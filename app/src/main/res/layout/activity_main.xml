@@ -88,7 +88,7 @@
         android:id="@+id/likeCardView"
         style="@style/CardTheme"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:cardCornerRadius="@dimen/app_margin_small"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,21 +114,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/app_margin_smallest"
-                tools:text="Лайки"
                 app:layout_constraintBottom_toBottomOf="@+id/likeIcon"
                 app:layout_constraintStart_toEndOf="@+id/likeIcon"
-                app:layout_constraintTop_toTopOf="@+id/likeIcon" />
+                app:layout_constraintTop_toTopOf="@+id/likeIcon"
+                tools:text="Лайки" />
 
             <TextView
                 android:id="@+id/remainingCountText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/app_margin_smallest"
-                tools:text="ещё"
                 android:textColor="@color/colorLiteBlue"
                 app:layout_constraintBottom_toBottomOf="@+id/likeArrowRightBtn"
                 app:layout_constraintEnd_toStartOf="@+id/likeArrowRightBtn"
-                app:layout_constraintTop_toTopOf="@+id/likeArrowRightBtn" />
+                app:layout_constraintTop_toTopOf="@+id/likeArrowRightBtn"
+                tools:text="ещё" />
 
             <ImageView
                 android:id="@+id/likeArrowRightBtn"
@@ -143,16 +143,24 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/likedRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="90dp"
                 android:layout_marginStart="@dimen/app_margin_semi_large"
-                android:layout_marginLeft="@dimen/app_margin_semi_large"
                 android:layout_marginEnd="@dimen/app_margin_semi_large"
-                android:layout_marginRight="@dimen/app_margin_semi_large"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/likedRecyclerView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -162,7 +170,7 @@
         android:id="@+id/commentCardView"
         style="@style/CardTheme"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:cardCornerRadius="@dimen/app_margin_small"
         app:layout_constraintEnd_toEndOf="parent"
@@ -195,12 +203,10 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/commentRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="90dp"
                 android:layout_marginStart="@dimen/app_margin_semi_large"
-                android:layout_marginLeft="@dimen/app_margin_semi_large"
                 android:layout_marginEnd="@dimen/app_margin_semi_large"
-                android:layout_marginRight="@dimen/app_margin_semi_large"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -210,14 +216,127 @@
 
     </androidx.cardview.widget.CardView>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/markedCardView"
+        style="@style/CardTheme"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        app:cardCornerRadius="@dimen/app_margin_small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/commentCardView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/markdeIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin_semi_large"
+                android:layout_marginTop="@dimen/app_margin_smallest"
+                android:layout_marginBottom="@dimen/app_margin_smallest"
+                android:src="@drawable/ic_person"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/markedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin_smallest"
+                app:layout_constraintBottom_toBottomOf="@+id/markdeIcon"
+                app:layout_constraintStart_toEndOf="@+id/markdeIcon"
+                app:layout_constraintTop_toTopOf="@+id/markdeIcon"
+                tools:text="Отметки" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/repostsCardView"
+        style="@style/CardTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:cardCornerRadius="@dimen/app_margin_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/markedCardView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/repostsIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin_semi_large"
+                android:layout_marginTop="@dimen/app_margin_smallest"
+                android:layout_marginBottom="@dimen/app_margin_smallest"
+                android:src="@drawable/ic_repeat"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/repostsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin_smallest"
+                app:layout_constraintBottom_toBottomOf="@+id/repostsIcon"
+                app:layout_constraintStart_toEndOf="@+id/repostsIcon"
+                app:layout_constraintTop_toTopOf="@+id/repostsIcon"
+                tools:text="Репосты" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bookmarkCardView"
+        style="@style/CardTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:cardCornerRadius="@dimen/app_margin_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repostsCardView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/bookmarkIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin_semi_large"
+                android:layout_marginTop="@dimen/app_margin_smallest"
+                android:layout_marginBottom="@dimen/app_margin_smallest"
+                android:src="@drawable/ic_bookmark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/bookmarkText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin_smallest"
+                app:layout_constraintBottom_toBottomOf="@+id/bookmarkIcon"
+                app:layout_constraintStart_toEndOf="@+id/bookmarkIcon"
+                app:layout_constraintTop_toTopOf="@+id/bookmarkIcon"
+                tools:text="Закладки" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

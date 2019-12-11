@@ -3,6 +3,7 @@ package com.example.poststatistics.rest;
 import com.example.poststatistics.models.PostRequest;
 import com.example.poststatistics.models.comment.CommentExample;
 import com.example.poststatistics.models.liked.liked_response.LikedExample;
+import com.example.poststatistics.models.marked.MarkedExample;
 import com.example.poststatistics.models.post.post_response.Post;
 
 import io.reactivex.Single;
@@ -29,4 +30,10 @@ public interface RetrofitRestService {
                                            @Header("Accept") String headerAccept,
                                            @Header("Authorization") String headerToken,
                                            @Body PostRequest body);
+
+    @POST("/v1/users/posts/mentions/all")
+    Single<MarkedExample> getMarkedUsers(@Header("Content-Type") String headerContentType,
+                                         @Header("Accept") String headerAccept,
+                                         @Header("Authorization") String headerToken,
+                                         @Body PostRequest body);
 }
