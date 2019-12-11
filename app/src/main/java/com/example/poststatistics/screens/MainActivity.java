@@ -14,8 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.poststatistics.R;
-import com.example.poststatistics.models.liked.liked_response.Datum;
+import com.example.poststatistics.models.comment.CommentDatum;
+import com.example.poststatistics.models.liked.liked_response.LikedDatum;
 import com.example.poststatistics.rest.ServerApiImpl;
+import com.example.poststatistics.screens.adapters.CommentAdapter;
 import com.example.poststatistics.screens.adapters.LikedAdapter;
 
 import java.util.List;
@@ -24,14 +26,23 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     private Toolbar toolbar;
     private ProgressBar progressBar;
-    private TextView likeCountText;
-    private TextView remainingCountText;
+    private MainPresenter presenter;
+
+    //Views
     private TextView viewsTextCount;
 
+    //Liked
+    private TextView likeCountText;
+    private TextView remainingCountText;
     private LinearLayoutManager layoutManager;
     private RecyclerView recyclerView;
     private LikedAdapter likedAdapter;
-    private MainPresenter presenter;
+
+    //Comment
+    private TextView commentCountText;
+    private LinearLayoutManager commentLayoutManager;
+    private RecyclerView commentRecyclerView;
+    private CommentAdapter commentAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,29 +54,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
         getSupportActionBar().setTitle(R.string.toolbarLeftBtn);
 
         progressBar = findViewById(R.id.progressBar);
-        likeCountText = findViewById(R.id.likeCountText);
-        remainingCountText = findViewById(R.id.remainingCountText);
-        viewsTextCount = findViewById(R.id.viewsText);
-
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView = findViewById(R.id.likedRecyclerView);
-        recyclerView.setLayoutManager(layoutManager);
-
-        likedAdapter = new LikedAdapter(this, new LikedAdapter.RemainingCount() {
-            @Override
-            public void setRemainingCount(int remainingCount) {
-                remainingCountText.setText(getString(R.string.count_users, remainingCount));
-            }
-
-            @Override
-            public void setLikedCount(int likedUsersCount) {
-                likeCountText.setText(getString(R.string.liked_users, likedUsersCount));
-            }
-        });
-
-        recyclerView.setAdapter(likedAdapter);
-
         presenter = new MainPresenter(this, new ServerApiImpl(this));
+
+        initViewsList();
+        initLikedList();
+        initCommentList();
     }
 
     @Override
@@ -95,9 +88,15 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     @Override
-    public void setItems(List<Datum> likedUsersList) {
+    public void setItems(List<LikedDatum> likedUsersList) {
         likedAdapter.setItems(likedUsersList);
         likedAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void setCommentItems(List<CommentDatum> commentUsersList) {
+        commentAdapter.setCommentItems(commentUsersList);
+        commentAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -113,5 +112,47 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     public void hideProgress() {
         progressBar.setVisibility(View.GONE);
+    }
+
+    private void initViewsList(){
+        viewsTextCount = findViewById(R.id.viewsText);
+    }
+
+    private void initLikedList(){
+        likeCountText = findViewById(R.id.likeCountText);
+        remainingCountText = findViewById(R.id.remainingCountText);
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView = findViewById(R.id.likedRecyclerView);
+        recyclerView.setLayoutManager(layoutManager);
+
+        likedAdapter = new LikedAdapter(this, new LikedAdapter.LikedCountInterface() {
+            @Override
+            public void setRemainingCount(int remainingLikedCount) {
+                remainingCountText.setText(getString(R.string.count_users, remainingLikedCount));
+            }
+
+            @Override
+            public void setLikedCount(int likedUsersCount) {
+                likeCountText.setText(getString(R.string.liked_users, likedUsersCount));
+            }
+        });
+
+        recyclerView.setAdapter(likedAdapter);
+    }
+
+    private void initCommentList(){
+        commentCountText = findViewById(R.id.commentCountText);
+        commentLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        commentRecyclerView = findViewById(R.id.commentRecyclerView);
+        commentRecyclerView.setLayoutManager(commentLayoutManager);
+
+        commentAdapter = new CommentAdapter(this, new CommentAdapter.CommentCountInterface() {
+            @Override
+            public void setCommentCount(int commentUsersCount) {
+                commentCountText.setText(getString(R.string.comment_users, commentUsersCount));
+            }
+        });
+
+        commentRecyclerView.setAdapter(commentAdapter);
     }
 }

@@ -3,7 +3,7 @@ package com.example.poststatistics.models.post.post_response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Image {
+public class PostImage {
 
     @SerializedName("url_medium")
     @Expose

@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Attachments {
+public class PostAttachments {
 
-    @SerializedName("images")
+    @SerializedName("postImages")
     @Expose
-    private List<Image> images = null;
+    private List<PostImage> postImages = null;
     @SerializedName("videos")
     @Expose
     private Object videos;
@@ -17,12 +17,12 @@ public class Attachments {
     @Expose
     private Object posts;
 
-    public List<Image> getImages() {
-        return images;
+    public List<PostImage> getPostImages() {
+        return postImages;
     }
 
-    public void setImages(List<Image> images) {
-        this.images = images;
+    public void setPostImages(List<PostImage> postImages) {
+        this.postImages = postImages;
     }
 
     public Object getVideos() {

@@ -1,9 +1,9 @@
-package com.example.poststatistics.models.liked.liked_response;
+package com.example.poststatistics.models.comment;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Datum {
+public class CommentDatum {
 
     @SerializedName("id")
     @Expose
@@ -16,7 +16,7 @@ public class Datum {
     private Object activeGift;
     @SerializedName("avatar_image")
     @Expose
-    private AvatarImage avatarImage;
+    private CommentAvatarImage commentAvatarImage;
     @SerializedName("off_page")
     @Expose
     private Boolean offPage;
@@ -31,7 +31,7 @@ public class Datum {
     private String status;
     @SerializedName("gender")
     @Expose
-    private String gender;
+    private Object gender;
     @SerializedName("is_subscribed")
     @Expose
     private Boolean isSubscribed;
@@ -47,9 +47,6 @@ public class Datum {
     @SerializedName("has_me_in_blacklist")
     @Expose
     private Boolean hasMeInBlacklist;
-    @SerializedName("multiplier")
-    @Expose
-    private Integer multiplier;
 
     public Integer getId() {
         return id;
@@ -75,12 +72,12 @@ public class Datum {
         this.activeGift = activeGift;
     }
 
-    public AvatarImage getAvatarImage() {
-        return avatarImage;
+    public CommentAvatarImage getCommentAvatarImage() {
+        return commentAvatarImage;
     }
 
-    public void setAvatarImage(AvatarImage avatarImage) {
-        this.avatarImage = avatarImage;
+    public void setCommentAvatarImage(CommentAvatarImage commentAvatarImage) {
+        this.commentAvatarImage = commentAvatarImage;
     }
 
     public Boolean getOffPage() {
@@ -115,11 +112,11 @@ public class Datum {
         this.status = status;
     }
 
-    public String getGender() {
+    public Object getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Object gender) {
         this.gender = gender;
     }
 
@@ -163,11 +160,4 @@ public class Datum {
         this.hasMeInBlacklist = hasMeInBlacklist;
     }
 
-    public Integer getMultiplier() {
-        return multiplier;
-    }
-
-    public void setMultiplier(Integer multiplier) {
-        this.multiplier = multiplier;
-    }
 }

@@ -3,7 +3,7 @@ package com.example.poststatistics.models.post.post_response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Rating {
+public class PostRating {
 
     @SerializedName("level")
     @Expose

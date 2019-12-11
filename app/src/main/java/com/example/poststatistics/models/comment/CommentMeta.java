@@ -1,9 +1,9 @@
-package com.example.poststatistics.models.liked.liked_response;
+package com.example.poststatistics.models.comment;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Meta {
+public class CommentMeta {
 
     @SerializedName("current_page")
     @Expose
@@ -82,4 +82,5 @@ public class Meta {
     public void setTotal(Integer total) {
         this.total = total;
     }
+
 }

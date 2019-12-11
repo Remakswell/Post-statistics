@@ -16,8 +16,9 @@ class MainPresenter {
         if (mainView != null) {
             mainView.showProgress();
         }
-        serverApiImp.addLikedUsersList();
+        serverApiImp.addLikedUsers();
         serverApiImp.addViewsCount();
+        serverApiImp.addCommentUsers();
     }
 
     void onDestroy() {

@@ -25,12 +25,12 @@ public class Post {
     @SerializedName("content")
     @Expose
     private Object content;
-    @SerializedName("author")
+    @SerializedName("postAuthor")
     @Expose
-    private Author author;
-    @SerializedName("attachments")
+    private PostAuthor postAuthor;
+    @SerializedName("postAttachments")
     @Expose
-    private Attachments attachments;
+    private PostAttachments postAttachments;
     @SerializedName("site_link")
     @Expose
     private String siteLink;
@@ -54,7 +54,7 @@ public class Post {
     private String title;
     @SerializedName("attachments_order")
     @Expose
-    private List<AttachmentsOrder> attachmentsOrder = null;
+    private List<PostAttachmentsOrder> postAttachmentsOrder = null;
     @SerializedName("is_liked")
     @Expose
     private Boolean isLiked;
@@ -149,20 +149,20 @@ public class Post {
         this.content = content;
     }
 
-    public Author getAuthor() {
-        return author;
+    public PostAuthor getPostAuthor() {
+        return postAuthor;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setPostAuthor(PostAuthor postAuthor) {
+        this.postAuthor = postAuthor;
     }
 
-    public Attachments getAttachments() {
-        return attachments;
+    public PostAttachments getPostAttachments() {
+        return postAttachments;
     }
 
-    public void setAttachments(Attachments attachments) {
-        this.attachments = attachments;
+    public void setPostAttachments(PostAttachments postAttachments) {
+        this.postAttachments = postAttachments;
     }
 
     public String getSiteLink() {
@@ -221,12 +221,12 @@ public class Post {
         this.title = title;
     }
 
-    public List<AttachmentsOrder> getAttachmentsOrder() {
-        return attachmentsOrder;
+    public List<PostAttachmentsOrder> getPostAttachmentsOrder() {
+        return postAttachmentsOrder;
     }
 
-    public void setAttachmentsOrder(List<AttachmentsOrder> attachmentsOrder) {
-        this.attachmentsOrder = attachmentsOrder;
+    public void setPostAttachmentsOrder(List<PostAttachmentsOrder> postAttachmentsOrder) {
+        this.postAttachmentsOrder = postAttachmentsOrder;
     }
 
     public Boolean getIsLiked() {

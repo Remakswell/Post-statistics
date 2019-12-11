@@ -3,7 +3,7 @@ package com.example.poststatistics.models.post.post_response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Author {
+public class PostAuthor {
 
     @SerializedName("id")
     @Expose
@@ -16,7 +16,7 @@ public class Author {
     private Object activeGift;
     @SerializedName("avatar_image")
     @Expose
-    private AvatarImage avatarImage;
+    private PostAvatarImage postAvatarImage;
     @SerializedName("is_commercial")
     @Expose
     private Boolean isCommercial;
@@ -38,15 +38,15 @@ public class Author {
     @SerializedName("is_online")
     @Expose
     private Boolean isOnline;
-    @SerializedName("rating")
+    @SerializedName("postRating")
     @Expose
-    private Rating rating;
+    private PostRating postRating;
     @SerializedName("comments")
     @Expose
     private String comments;
     @SerializedName("geo_id")
     @Expose
-    private GeoId geoId;
+    private PostGeoId postGeoId;
     @SerializedName("contest_entry_instance")
     @Expose
     private Object contestEntryInstance;
@@ -81,12 +81,12 @@ public class Author {
         this.activeGift = activeGift;
     }
 
-    public AvatarImage getAvatarImage() {
-        return avatarImage;
+    public PostAvatarImage getPostAvatarImage() {
+        return postAvatarImage;
     }
 
-    public void setAvatarImage(AvatarImage avatarImage) {
-        this.avatarImage = avatarImage;
+    public void setPostAvatarImage(PostAvatarImage postAvatarImage) {
+        this.postAvatarImage = postAvatarImage;
     }
 
     public Boolean getIsCommercial() {
@@ -145,12 +145,12 @@ public class Author {
         this.isOnline = isOnline;
     }
 
-    public Rating getRating() {
-        return rating;
+    public PostRating getPostRating() {
+        return postRating;
     }
 
-    public void setRating(Rating rating) {
-        this.rating = rating;
+    public void setPostRating(PostRating postRating) {
+        this.postRating = postRating;
     }
 
     public String getComments() {
@@ -161,12 +161,12 @@ public class Author {
         this.comments = comments;
     }
 
-    public GeoId getGeoId() {
-        return geoId;
+    public PostGeoId getPostGeoId() {
+        return postGeoId;
     }
 
-    public void setGeoId(GeoId geoId) {
-        this.geoId = geoId;
+    public void setPostGeoId(PostGeoId postGeoId) {
+        this.postGeoId = postGeoId;
     }
 
     public Object getContestEntryInstance() {

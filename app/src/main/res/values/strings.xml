@@ -5,5 +5,6 @@
     <string name="update_hint">update_hint</string>
     <string name="count_users">ещё %1$d</string>
     <string name="liked_users">Лайки %1$d</string>
+    <string name="comment_users">Комментаторы %1$d</string>
     <string name="views_count">Просмотры %1$d</string>
 </resources>

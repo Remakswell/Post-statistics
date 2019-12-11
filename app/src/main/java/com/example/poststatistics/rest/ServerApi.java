@@ -1,6 +1,7 @@
 package com.example.poststatistics.rest;
 
 public interface ServerApi {
-    void addLikedUsersList();
+    void addLikedUsers();
     void addViewsCount();
+    void addCommentUsers();
 }

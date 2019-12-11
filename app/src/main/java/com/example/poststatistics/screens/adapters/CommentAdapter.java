@@ -12,20 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.poststatistics.R;
-import com.example.poststatistics.models.liked.liked_response.LikedDatum;
+import com.example.poststatistics.models.comment.CommentDatum;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LikedAdapter extends RecyclerView.Adapter<LikedAdapter.ViewHolder> {
+public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder>{
 
-    private List<LikedDatum> mLikedPost = new ArrayList<>();
     private Context mContext;
-    private LikedCountInterface countInterface;
-    private int countItem = 0;
+    private List<CommentDatum> mCommentList = new ArrayList<>();
+    private CommentCountInterface countInterface;
 
-    public LikedAdapter( Context context, LikedCountInterface countInterface) {
-        this.mContext = context;
+    public CommentAdapter(Context mContext, CommentCountInterface countInterface) {
+        this.mContext = mContext;
         this.countInterface = countInterface;
     }
 
@@ -38,33 +37,24 @@ public class LikedAdapter extends RecyclerView.Adapter<LikedAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         Glide.with(mContext)
                 .asBitmap()
-                .load(mLikedPost.get(position).getLikedAvatarImage().getUrlMedium())
+                .load(mCommentList.get(position).getCommentAvatarImage().getUrlMedium())
                 .into(holder.userImg);
 
-        holder.userName.setText(mLikedPost.get(position).getNickname());
-
-        countInterface.setLikedCount(mLikedPost.size());
-
-        if (countItem < mLikedPost.size()){
-            countInterface.setRemainingCount(mLikedPost.size() - countItem);
-            countItem++;
-        }
-
-        if(countItem == mLikedPost.size()){
-            countInterface.setRemainingCount(0);
-        }
-    }
-
-    public void setItems(List<LikedDatum> mLikedPost){
-        this.mLikedPost.clear();
-        this.mLikedPost.addAll(mLikedPost);
+        holder.userName.setText(mCommentList.get(position).getNickname());
+        countInterface.setCommentCount(mCommentList.size());
     }
 
     @Override
     public int getItemCount() {
-        return mLikedPost.size();
+        return mCommentList.size();
+    }
+
+    public void setCommentItems(List<CommentDatum> mCommentList){
+        this.mCommentList.clear();
+        this.mCommentList.addAll(mCommentList);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
@@ -78,8 +68,7 @@ public class LikedAdapter extends RecyclerView.Adapter<LikedAdapter.ViewHolder> 
         }
     }
 
-    public interface LikedCountInterface{
-        void setRemainingCount(int remainingLikedCount);
-        void setLikedCount(int likedUsersCount);
+    public interface CommentCountInterface{
+        void setCommentCount(int commentUsersCount);
     }
 }

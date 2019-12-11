@@ -1,10 +1,9 @@
-package com.example.poststatistics.models.liked.liked_response;
-
+package com.example.poststatistics.models.comment;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Links {
+public class CommentLinks {
 
     @SerializedName("first")
     @Expose
@@ -50,4 +49,5 @@ public class Links {
     public void setNext(Object next) {
         this.next = next;
     }
+
 }

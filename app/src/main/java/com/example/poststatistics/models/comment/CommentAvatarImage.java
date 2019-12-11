@@ -1,9 +1,9 @@
-package com.example.poststatistics.models.post.post_response;
+package com.example.poststatistics.models.comment;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AvatarImage {
+public class CommentAvatarImage {
 
     @SerializedName("url_medium")
     @Expose
@@ -32,6 +32,9 @@ public class AvatarImage {
     @SerializedName("url_small_origin")
     @Expose
     private String urlSmallOrigin;
+    @SerializedName("mentioned_users_count")
+    @Expose
+    private Integer mentionedUsersCount;
 
     public String getUrlMedium() {
         return urlMedium;
@@ -104,4 +107,13 @@ public class AvatarImage {
     public void setUrlSmallOrigin(String urlSmallOrigin) {
         this.urlSmallOrigin = urlSmallOrigin;
     }
+
+    public Integer getMentionedUsersCount() {
+        return mentionedUsersCount;
+    }
+
+    public void setMentionedUsersCount(Integer mentionedUsersCount) {
+        this.mentionedUsersCount = mentionedUsersCount;
+    }
+
 }
