@@ -4,15 +4,124 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".screens.MainActivity"
+    tools:ignore="contentDescription">
 
-    <TextView
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.poststatistics.screens.MainFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/turnedBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/homeBtn"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/app_margin_42"
+        android:layout_marginBottom="@dimen/app_margin_small"
+        android:background="@android:color/white"
+        android:src="@drawable/ic_home"
+        app:layout_constraintBottom_toTopOf="@+id/leftArrowBtn"
+        app:layout_constraintEnd_toStartOf="@+id/zoomBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/zoomBtn"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/app_margin_42"
+        android:layout_marginStart="2dp"
+        android:background="@android:color/white"
+        android:src="@drawable/ic_zoom"
+        app:layout_constraintBottom_toBottomOf="@+id/homeBtn"
+        app:layout_constraintEnd_toStartOf="@+id/turnedBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/homeBtn"
+        app:layout_constraintTop_toTopOf="@+id/homeBtn" />
+
+    <ImageButton
+        android:id="@+id/favoriteBtn"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/app_margin_42"
+        android:layout_marginStart="2dp"
+        android:background="@android:color/white"
+        android:src="@drawable/ic_favorite_32"
+        app:layout_constraintBottom_toBottomOf="@+id/turnedBtn"
+        app:layout_constraintEnd_toStartOf="@+id/personBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/turnedBtn"
+        app:layout_constraintTop_toTopOf="@+id/turnedBtn"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/personBtn"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/app_margin_42"
+        android:layout_marginStart="2dp"
+        android:background="@android:color/white"
+        android:src="@drawable/ic_person_32"
+        app:layout_constraintBottom_toBottomOf="@+id/favoriteBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/favoriteBtn"
+        app:layout_constraintTop_toTopOf="@+id/favoriteBtn" />
+
+    <ImageButton
+        android:id="@+id/turnedBtn"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/app_margin_42"
+        android:layout_marginStart="2dp"
+        android:background="@android:color/white"
+        android:src="@drawable/ic_turned"
+        app:layout_constraintBottom_toBottomOf="@+id/zoomBtn"
+        app:layout_constraintEnd_toStartOf="@+id/favoriteBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/zoomBtn"
+        app:layout_constraintTop_toTopOf="@+id/zoomBtn" />
+
+    <ImageView
+        android:id="@+id/leftArrowBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginStart="@dimen/app_margin_medium"
+        android:src="@drawable/ic_arrow_left_grey"
+        app:layout_constraintBottom_toBottomOf="@+id/rightArrowBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rightArrowBtn" />
+
+    <ImageView
+        android:id="@+id/rightArrowBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_right_grey"
+        app:layout_constraintBottom_toBottomOf="@+id/todayBtn"
+        app:layout_constraintEnd_toStartOf="@+id/todayBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/leftArrowBtn"
+        app:layout_constraintTop_toTopOf="@+id/todayBtn" />
+
+    <ImageView
+        android:id="@+id/todayBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_today"
+        app:layout_constraintBottom_toBottomOf="@+id/exploreBtn"
+        app:layout_constraintEnd_toStartOf="@+id/exploreBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/rightArrowBtn"
+        app:layout_constraintTop_toTopOf="@+id/exploreBtn" />
+
+    <ImageView
+        android:id="@+id/exploreBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/app_margin_medium"
+        android:layout_marginBottom="@dimen/app_margin_small"
+        android:src="@drawable/ic_explore"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
