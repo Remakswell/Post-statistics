@@ -12,7 +12,7 @@ class MainPresenter {
         this.serverApiImp = serverApiImp;
     }
 
-    void onResume(){
+    void onStart(){
         if (mainView != null) {
             mainView.showProgress();
         }
